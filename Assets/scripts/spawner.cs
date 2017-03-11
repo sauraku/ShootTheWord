@@ -21,13 +21,25 @@ public class spawner : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update()
+	{
+		 if (Input.GetMouseButtonDown (0)) {    
+			 Debug.Log("here");
+             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			 RaycastHit hit;
+             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+                 // whatever tag you are looking for on your game object
+                 Debug.Log(hit.collider.name);
+                 hit.collider.transform.GetComponent<clickAnimation>().split();
+             }    
+         }
 	}
 
 	IEnumerator spawn()
     {
 		string word = file.getRandomWord();
+		int letterExceptValidOne;
+		Transform x;
 		for(int i=0;i<word.Length;i++)
 		{
 			text[i].text=char.ToUpper(word[i]).ToString();
@@ -39,23 +51,58 @@ public class spawner : MonoBehaviour {
 			int turn = Random.Range(0,3);
 			if(turn==0)
 			{
-				Instantiate(letters[temp],sp1.position,Quaternion.identity);
-				Instantiate(letters[Random.Range(0,26)],sp2.position,Quaternion.identity);
-				Instantiate(letters[Random.Range(0,26)],sp3.position,Quaternion.identity);
+				x= Instantiate(letters[temp],sp1.position,Quaternion.identity) as Transform;
+				x.gameObject.tag="letter";
+				letterExceptValidOne= Random.Range(0,26);
+				while(letterExceptValidOne==temp)
+				{
+					letterExceptValidOne= Random.Range(0,26);
+				}
+				Instantiate(letters[letterExceptValidOne],sp2.position,Quaternion.identity);
+				letterExceptValidOne= Random.Range(0,26);
+				while(letterExceptValidOne==temp)
+				{
+					letterExceptValidOne= Random.Range(0,26);
+				}
+				Instantiate(letters[letterExceptValidOne],sp3.position,Quaternion.identity);
 			}
 			else if(turn==1)
 			{
-				Instantiate(letters[temp],sp2.position,Quaternion.identity);
+				x= Instantiate(letters[temp],sp2.position,Quaternion.identity) as Transform;
+				x.gameObject.tag="letter";
+				letterExceptValidOne= Random.Range(0,26);
+				while(letterExceptValidOne==temp)
+				{
+					letterExceptValidOne= Random.Range(0,26);
+				}
 				Instantiate(letters[Random.Range(0,26)],sp1.position,Quaternion.identity);
+				letterExceptValidOne= Random.Range(0,26);
+				while(letterExceptValidOne==temp)
+				{
+					letterExceptValidOne= Random.Range(0,26);
+				}
 				Instantiate(letters[Random.Range(0,26)],sp3.position,Quaternion.identity);
 			}
 			else
 			{
-				Instantiate(letters[temp],sp3.position,Quaternion.identity);
+				x = Instantiate(letters[temp],sp3.position,Quaternion.identity) as Transform;
+				x.gameObject.tag="letter";
+				letterExceptValidOne= Random.Range(0,26);
+				while(letterExceptValidOne==temp)
+				{
+					letterExceptValidOne= Random.Range(0,26);
+				}
 				Instantiate(letters[Random.Range(0,26)],sp1.position,Quaternion.identity);
+				letterExceptValidOne= Random.Range(0,26);
+				while(letterExceptValidOne==temp)
+				{
+					letterExceptValidOne= Random.Range(0,26);
+				}
 				Instantiate(letters[Random.Range(0,26)],sp2.position,Quaternion.identity);
 			}
             
         }
+		yield return new WaitForSeconds(3f);
+		Camera.main.transform.GetComponent<canvasManagement>().showWin();
     }
 }

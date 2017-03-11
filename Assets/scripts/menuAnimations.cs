@@ -25,16 +25,14 @@ public class menuAnimations : MonoBehaviour {
 		StartCoroutine(changePlay());
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void onClickPlay()
     {
         PlayerPrefs.SetInt("color", color);
         SceneManager.LoadScene(1);
     }
+
+
 
 	IEnumerator changePlay()
     {

@@ -25,10 +25,10 @@ public class fileReader {
 
 	public string getRandomWord()
 	{
-		int temp = Random.Range(0,62995);
+		int temp = Random.Range(0,words.Length);
 		while(words[temp].Length<4 || words[temp].Length>10)
 		{
-			temp = Random.Range(0,62995);
+			temp = Random.Range(0,words.Length);
 		}
 		return words[temp];
 	}
