@@ -51,7 +51,7 @@
      <Compile Include="Assets\scripts\colorSetter.cs" />
      <Compile Include="Assets\scripts\fileReader.cs" />
      <Compile Include="Assets\scripts\laser.cs" />
-     <Compile Include="Assets\scripts\menuAnimations.cs" />
+     <Compile Include="Assets\scripts\menu.cs" />
      <Compile Include="Assets\scripts\spawner.cs" />
      <None Include="Assets\wordPool\words.txt" />
  <Reference Include="UnityEngine.UI">

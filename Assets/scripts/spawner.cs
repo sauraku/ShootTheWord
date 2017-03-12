@@ -10,6 +10,7 @@ public class spawner : MonoBehaviour {
 	public Transform sp1,sp2,sp3;
 	public float interval=1.0f;
 	public Text[] text;
+	public Text numberOfTimesPlayed;
 	private fileReader file;
 	void Awake()
 	{
@@ -39,6 +40,7 @@ public class spawner : MonoBehaviour {
     {
 		string word = file.getRandomWord();
 		int letterExceptValidOne;
+		numberOfTimesPlayed.text= PlayerPrefs.GetInt("played").ToString();
 		Transform x;
 		for(int i=0;i<word.Length;i++)
 		{

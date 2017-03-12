@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class menuAnimations : MonoBehaviour {
+public class menu : MonoBehaviour {
 
 	// Use this for initialization
 
@@ -17,6 +17,10 @@ public class menuAnimations : MonoBehaviour {
         if (PlayerPrefs.HasKey("color") == false)
         {
             PlayerPrefs.SetInt("color", 0);
+        }
+        if (PlayerPrefs.HasKey("played") == false)
+        {
+            PlayerPrefs.SetInt("played", 0);
         }
     }
 

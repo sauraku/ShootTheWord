@@ -34,6 +34,7 @@ public class canvasManagement : MonoBehaviour {
 
 	public void restart()
 	{
+		PlayerPrefs.SetInt("played",PlayerPrefs.GetInt("played")+1);
 		lose.enabled=false;
 		win.enabled= false;
 		Time.timeScale= 1.0f;

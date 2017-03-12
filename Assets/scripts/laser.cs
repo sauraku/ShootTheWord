@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class laser : MonoBehaviour {
 
-	void OnCollisionEnter (Collision col)
+	void OnTriggerEnter (Collider col)
     {
         if(col.gameObject.tag == "letter")
         {
-            Debug.Log("gameover" + col.collider.name);
+            Debug.Log("gameover" + col.name);
 			Camera.main.transform.GetComponent<canvasManagement>().showLose();
         }
-		Destroy(col.collider.gameObject);
+		//Destroy(col.collider.gameObject);
     }
 }
