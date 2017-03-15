@@ -32,13 +32,19 @@ public class canvasManagement : MonoBehaviour {
 		lose.enabled=false;
 	}
 
+	public void home()
+	{
+		PlayerPrefs.SetInt("played",PlayerPrefs.GetInt("played")+1);
+		Time.timeScale=1f;
+		SceneManager.LoadScene(0);
+	}
 	public void restart()
 	{
 		PlayerPrefs.SetInt("played",PlayerPrefs.GetInt("played")+1);
 		lose.enabled=false;
 		win.enabled= false;
 		Time.timeScale= 1.0f;
-		SceneManager.LoadScene(1);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 	}
 	

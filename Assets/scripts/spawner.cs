@@ -21,7 +21,6 @@ public class spawner : MonoBehaviour {
 		StartCoroutine(spawn());
 	}
 	
-	// Update is called once per frame
 	void Update()
 	{
 		 if (Input.GetMouseButtonDown (0)) {    
@@ -29,7 +28,6 @@ public class spawner : MonoBehaviour {
              var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			 RaycastHit hit;
              if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
-                 // whatever tag you are looking for on your game object
                  Debug.Log(hit.collider.name);
                  hit.collider.transform.GetComponent<clickAnimation>().split();
              }    
@@ -46,13 +44,19 @@ public class spawner : MonoBehaviour {
 		{
 			text[i].text=char.ToUpper(word[i]).ToString();
 		}
+		//Debug.Log(word);
         for(int i=0;i<word.Length;i++)
         {
+			//Debug.Log(i+" "+word[i]+" "+interval);
             yield return new WaitForSeconds(interval);
+			//Debug.Log(5);
 			int temp = char.ToUpper(word[i])-65;
+			//Debug.Log(6);
 			int turn = Random.Range(0,3);
+			//Debug.Log("start");
 			if(turn==0)
 			{
+				//Debug.Log(0);
 				x= Instantiate(letters[temp],sp1.position,Quaternion.identity) as Transform;
 				x.gameObject.tag="letter";
 				letterExceptValidOne= Random.Range(0,26);
@@ -70,6 +74,7 @@ public class spawner : MonoBehaviour {
 			}
 			else if(turn==1)
 			{
+				//Debug.Log(1);
 				x= Instantiate(letters[temp],sp2.position,Quaternion.identity) as Transform;
 				x.gameObject.tag="letter";
 				letterExceptValidOne= Random.Range(0,26);
@@ -77,16 +82,17 @@ public class spawner : MonoBehaviour {
 				{
 					letterExceptValidOne= Random.Range(0,26);
 				}
-				Instantiate(letters[Random.Range(0,26)],sp1.position,Quaternion.identity);
+				Instantiate(letters[letterExceptValidOne],sp1.position,Quaternion.identity);
 				letterExceptValidOne= Random.Range(0,26);
 				while(letterExceptValidOne==temp)
 				{
 					letterExceptValidOne= Random.Range(0,26);
 				}
-				Instantiate(letters[Random.Range(0,26)],sp3.position,Quaternion.identity);
+				Instantiate(letters[letterExceptValidOne],sp3.position,Quaternion.identity);
 			}
 			else
 			{
+				//Debug.Log(2);
 				x = Instantiate(letters[temp],sp3.position,Quaternion.identity) as Transform;
 				x.gameObject.tag="letter";
 				letterExceptValidOne= Random.Range(0,26);
@@ -94,16 +100,17 @@ public class spawner : MonoBehaviour {
 				{
 					letterExceptValidOne= Random.Range(0,26);
 				}
-				Instantiate(letters[Random.Range(0,26)],sp1.position,Quaternion.identity);
+				Instantiate(letters[letterExceptValidOne],sp1.position,Quaternion.identity);
 				letterExceptValidOne= Random.Range(0,26);
 				while(letterExceptValidOne==temp)
 				{
 					letterExceptValidOne= Random.Range(0,26);
 				}
-				Instantiate(letters[Random.Range(0,26)],sp2.position,Quaternion.identity);
+				Instantiate(letters[letterExceptValidOne],sp2.position,Quaternion.identity);
 			}
             
         }
+		//Debug.Log("end");
 		yield return new WaitForSeconds(3f);
 		Camera.main.transform.GetComponent<canvasManagement>().showWin();
     }

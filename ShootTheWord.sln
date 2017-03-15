@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{8356D503-C11C-A41D-2C62-0B7C57B99C22}") = "ShootTheWord", "Assembly-CSharp.csproj", "{085863DE-4224-27BC-5735-F2669CD6A9B0}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShootTheWord", "Assembly-CSharp.csproj", "{085863DE-4224-27BC-5735-F2669CD6A9B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

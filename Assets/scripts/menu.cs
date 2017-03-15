@@ -8,6 +8,7 @@ public class menu : MonoBehaviour {
 
 	// Use this for initialization
 
+    public Toggle difficult;
     public Sprite[] playSprites;
     private int color;
     public Button playButton;
@@ -22,10 +23,22 @@ public class menu : MonoBehaviour {
         {
             PlayerPrefs.SetInt("played", 0);
         }
+        if (PlayerPrefs.HasKey("difficult") == false)
+        {
+            PlayerPrefs.SetInt("difficult", 0);
+        }
     }
 
 	void Start () {
-        color =1;
+        color =2;
+        if(PlayerPrefs.GetInt("difficult")==0)
+        {
+            difficult.isOn= false;
+        }
+        else
+        {
+            difficult.isOn= true;
+        }
 		StartCoroutine(changePlay());
 	}
 	
@@ -33,7 +46,17 @@ public class menu : MonoBehaviour {
     public void onClickPlay()
     {
         PlayerPrefs.SetInt("color", color);
-        SceneManager.LoadScene(1);
+        Debug.Log(difficult.isOn);
+        if(difficult.isOn)
+        {
+            PlayerPrefs.SetInt("difficult",1);
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("difficult",0);
+            SceneManager.LoadScene(1);
+        }
     }
 
 
