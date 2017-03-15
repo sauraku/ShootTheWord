@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class clickAnimation : MonoBehaviour {
-
+/*
+to govern what happens when a letter is shot
+ */
 	public GameObject splitParticle;
 
 	public void split()
 	{
-		this.GetComponent<SphereCollider>().enabled= false;
-		Instantiate(splitParticle,transform.position,Quaternion.identity);
-		Destroy(gameObject);
+		this.GetComponent<SphereCollider>().enabled= false;		//remove sphere collider as sometimes unity takes time in destroying
+		Instantiate(splitParticle,transform.position,Quaternion.identity);	//instantiate split particles (animation)
+		Destroy(gameObject);	//finally destroy it
 
 
 		/*Transform child = transform.GetChild(0);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class colorSetter : MonoBehaviour {
 
-	// Use this for initialization
+	// Just set the color of the scene
 	public Color blue;
 	public Color red;
 	public Color green;

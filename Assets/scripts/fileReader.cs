@@ -6,6 +6,9 @@ using System.Text;
 
 public class fileReader {
 
+/*
+read the list of words as input of game
+ */
 	private string[] words = new string[62995];
 	public fileReader()
 	{
@@ -19,11 +22,11 @@ public class fileReader {
 				words[i++]=line;
 			}
 		}
-		Debug.Log(words.Length);
+		//Debug.Log(words.Length);
 		
 	}
 
-	public string getRandomWord()
+	public string getRandomWord()	//return random word from the wordlist
 	{
 		int temp = Random.Range(0,words.Length);
 		while(words[temp].Length<4 || words[temp].Length>10)
